@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RSA · Criptografar</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header class="topo">
+    <div class="topo-conteudo">
+      <p class="topo-sistema">Sistema 1 de 2</p>
+      <h1>Criptografar com RSA</h1>
+      <p class="topo-descricao">Gere um par de chaves, escreva a mensagem e criptografe. Depois leve o resultado para o sistema de descriptografia.</p>
+    </div>
+  </header>
+
+  <main class="pagina">
+
+    <p id="aviso" class="aviso" role="status" aria-live="polite" hidden></p>
+
+    <!-- PASSO 1: CHAVES -->
+    <section class="passo">
+      <h2><span class="numero-passo">1</span> Chaves</h2>
+
+      <div class="linha-acoes">
+        <label for="tamanho-chave">Tamanho de N</label>
+        <select id="tamanho-chave">
+          <option value="512">512 bits (rápido)</option>
+          <option value="1024" selected>1024 bits</option>
+          <option value="2048">2048 bits (pode demorar)</option>
+        </select>
+        <button type="button" id="botao-gerar" class="botao">Gerar chaves</button>
+      </div>
+
+      <div id="area-chaves" hidden>
+        <div class="campo">
+          <div class="campo-topo">
+            <label for="valor-e">Chave pública E</label>
+          </div>
+          <input type="text" id="valor-e" class="numero" readonly>
+        </div>
+
+        <div class="campo">
+          <div class="campo-topo">
+            <label for="valor-n">Módulo N <small>(faz parte das duas chaves)</small></label>
+            <button type="button" class="botao-copiar" data-copiar="valor-n" data-nome="N">Copiar N</button>
+          </div>
+          <textarea id="valor-n" class="numero" rows="4" readonly></textarea>
+        </div>
+
+        <div class="campo">
+          <div class="campo-topo">
+            <label for="valor-d">Chave privada D</label>
+            <button type="button" class="botao-copiar" data-copiar="valor-d" data-nome="D">Copiar D</button>
+          </div>
+          <textarea id="valor-d" class="numero" rows="4" readonly></textarea>
+        </div>
+
+        <details class="detalhes">
+          <summary>Ver os números usados no cálculo</summary>
+          <dl>
+            <dt>P (primo)</dt>
+            <dd id="valor-p" class="numero"></dd>
+            <dt>Q (primo)</dt>
+            <dd id="valor-q" class="numero"></dd>
+            <dt>φ(N) = (P − 1) × (Q − 1)</dt>
+            <dd id="valor-phi" class="numero"></dd>
+            <dt>Tamanho de N</dt>
+            <dd id="valor-bits"></dd>
+            <dt>Blocos da mensagem</dt>
+            <dd id="valor-bloco"></dd>
+          </dl>
+        </details>
+      </div>
+    </section>
+
+    <!-- PASSO 2: MENSAGEM -->
+    <section class="passo">
+      <h2><span class="numero-passo">2</span> Mensagem</h2>
+
+      <div class="campo">
+        <label for="texto-original">Texto original</label>
+        <textarea id="texto-original" rows="7" spellcheck="false" placeholder="Escreva aqui. Acentos, emojis e quebras de linha são aceitos."></textarea>
+        <p id="contador" class="nota"></p>
+      </div>
+
+      <button type="button" id="botao-criptografar" class="botao">Criptografar</button>
+    </section>
+
+    <!-- PASSO 3: RESULTADO -->
+    <section class="passo">
+      <h2><span class="numero-passo">3</span> Resultado</h2>
+
+      <div class="campo">
+        <div class="campo-topo">
+          <label for="resultado">Mensagem criptografada</label>
+          <button type="button" class="botao-copiar" data-copiar="resultado" data-nome="Resultado">Copiar resultado</button>
+        </div>
+        <textarea id="resultado" class="numero" rows="9" readonly placeholder="O resultado aparece aqui."></textarea>
+        <p id="resumo-resultado" class="nota"></p>
+      </div>
+
+      <p class="nota">No sistema 2, cole este resultado junto com <strong>D</strong> e <strong>N</strong>.</p>
+    </section>
+
+    <footer class="rodape">
+      <p><strong>Uso educacional.</strong> Este é o RSA "puro", sem padding: a mesma mensagem com a mesma chave sempre gera o mesmo resultado, e há ataques conhecidos contra isso. Não use para proteger dados reais. Sistemas de verdade usam RSA-OAEP com SHA-256 por meio de bibliotecas criptográficas confiáveis.</p>
+    </footer>
+  </main>
+
+</body>
+</html>

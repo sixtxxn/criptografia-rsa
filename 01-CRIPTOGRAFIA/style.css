@@ -1,0 +1,300 @@
+/* ===== Cores e fontes usadas na página inteira ===== */
+:root {
+  --fundo: #f3f2ee;
+  --papel: #ffffff;
+  --texto: #1e1e1c;
+  --texto-suave: #5f5d57;
+  --borda: #d4d1c8;
+  --destaque: #1d5c46;        /* verde: cor do sistema de criptografia */
+  --destaque-escuro: #144434;
+  --destaque-claro: #e3efe9;
+  --erro: #9b2c1f;
+  --erro-claro: #f8e6e2;
+  --info-claro: #edebe4;
+  --fonte-texto: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fonte-numero: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte-texto);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* ===== Topo ===== */
+.topo {
+  background: var(--destaque);
+  color: #fff;
+  padding: 28px 20px 24px;
+}
+
+.topo-conteudo {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.topo-sistema {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.topo h1 {
+  margin: 4px 0 6px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.topo-descricao {
+  margin: 0;
+  max-width: 600px;
+  opacity: 0.92;
+}
+
+/* ===== Corpo ===== */
+.pagina {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+.passo {
+  background: var(--papel);
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+.passo h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+  font-size: 19px;
+}
+
+.numero-passo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--destaque);
+  border-radius: 50%;
+  color: var(--destaque);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ===== Campos ===== */
+.campo {
+  margin-bottom: 14px;
+}
+
+.campo-topo {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.campo > label {
+  margin-bottom: 4px;
+}
+
+label small {
+  font-weight: 400;
+  color: var(--texto-suave);
+}
+
+textarea,
+input[type="text"],
+select {
+  width: 100%;
+  font: inherit;
+  color: var(--texto);
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 4px;
+  padding: 9px 10px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+  outline: 2px solid var(--destaque);
+  outline-offset: 0;
+  border-color: var(--destaque);
+}
+
+textarea[readonly],
+input[readonly] {
+  background: #fafaf7;
+}
+
+/* Números grandes e o pacote criptografado usam fonte de largura fixa */
+.numero {
+  font-family: var(--fonte-numero);
+  font-size: 13px;
+  word-break: break-all;
+}
+
+.nota {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--texto-suave);
+}
+
+/* ===== Botões ===== */
+.linha-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.linha-acoes select {
+  width: auto;
+}
+
+.botao {
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--destaque);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 18px;
+  cursor: pointer;
+}
+
+.botao:hover {
+  background: var(--destaque-escuro);
+}
+
+.botao:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.botao-copiar {
+  font: inherit;
+  font-size: 13px;
+  color: var(--destaque);
+  background: transparent;
+  border: 1px solid var(--destaque);
+  border-radius: 4px;
+  padding: 3px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.botao-copiar:hover {
+  background: var(--destaque-claro);
+}
+
+/* ===== Avisos ===== */
+.aviso {
+  /* "sticky": o aviso fica preso no alto da tela ao rolar, para nunca passar despercebido */
+  position: sticky;
+  top: 8px;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin: 0 0 18px;
+  padding: 10px 14px;
+  border-radius: 4px;
+  border-left: 4px solid;
+}
+
+.aviso-sucesso {
+  background: var(--destaque-claro);
+  border-color: var(--destaque);
+}
+
+.aviso-erro {
+  background: var(--erro-claro);
+  border-color: var(--erro);
+  color: var(--erro);
+}
+
+.aviso-info {
+  background: var(--info-claro);
+  border-color: var(--texto-suave);
+}
+
+/* ===== Detalhes do cálculo ===== */
+.detalhes {
+  border-top: 1px solid var(--borda);
+  padding-top: 10px;
+}
+
+.detalhes summary {
+  cursor: pointer;
+  color: var(--destaque);
+  font-weight: 600;
+}
+
+.detalhes dl {
+  margin: 12px 0 0;
+}
+
+.detalhes dt {
+  font-size: 14px;
+  color: var(--texto-suave);
+  margin-top: 8px;
+}
+
+.detalhes dd {
+  margin: 2px 0 0;
+}
+
+/* ===== Rodapé ===== */
+.rodape {
+  font-size: 14px;
+  color: var(--texto-suave);
+  border-top: 1px solid var(--borda);
+  padding-top: 14px;
+}
+
+/* ===== Telas pequenas ===== */
+@media (max-width: 560px) {
+  .topo h1 {
+    font-size: 23px;
+  }
+
+  .passo {
+    padding: 16px;
+  }
+
+  .campo-topo {
+    flex-wrap: wrap;
+  }
+
+  .linha-acoes select,
+  .linha-acoes .botao {
+    width: 100%;
+  }
+}

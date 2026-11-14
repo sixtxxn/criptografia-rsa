@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RSA · Descriptografar</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header class="topo">
+    <div class="topo-conteudo">
+      <p class="topo-sistema">Sistema 2 de 2</p>
+      <h1>Descriptografar com RSA</h1>
+      <p class="topo-descricao">Cole a chave privada (D e N) e a mensagem que saiu do sistema de criptografia para recuperar o texto original.</p>
+    </div>
+  </header>
+
+  <main class="pagina">
+
+    <p id="aviso" class="aviso" role="status" aria-live="polite" hidden></p>
+
+    <!-- PASSO 1: CHAVE PRIVADA -->
+    <section class="passo">
+      <h2><span class="numero-passo">1</span> Chave privada</h2>
+
+      <div class="campo">
+        <label for="campo-d">Chave privada D</label>
+        <textarea id="campo-d" class="numero" rows="4" spellcheck="false" autocomplete="off" placeholder="Cole aqui o valor de D"></textarea>
+      </div>
+
+      <div class="campo">
+        <label for="campo-n">Módulo N</label>
+        <textarea id="campo-n" class="numero" rows="4" spellcheck="false" autocomplete="off" placeholder="Cole aqui o valor de N"></textarea>
+      </div>
+    </section>
+
+    <!-- PASSO 2: MENSAGEM CRIPTOGRAFADA -->
+    <section class="passo">
+      <h2><span class="numero-passo">2</span> Mensagem criptografada</h2>
+
+      <div class="campo">
+        <label for="campo-pacote">Conteúdo gerado pelo sistema 1 <small>(de RSA-EDU/1 até FIM)</small></label>
+        <textarea id="campo-pacote" class="numero" rows="9" spellcheck="false" autocomplete="off" placeholder="RSA-EDU/1&#10;N-FINAL=...&#10;...&#10;FIM"></textarea>
+      </div>
+
+      <div class="linha-acoes">
+        <button type="button" id="botao-descriptografar" class="botao">Descriptografar</button>
+        <button type="button" id="botao-limpar" class="botao-secundario">Limpar tudo</button>
+      </div>
+    </section>
+
+    <!-- PASSO 3: TEXTO RECUPERADO -->
+    <section class="passo">
+      <h2><span class="numero-passo">3</span> Texto original</h2>
+
+      <div class="campo">
+        <div class="campo-topo">
+          <label for="texto-recuperado">Texto recuperado</label>
+          <button type="button" id="botao-copiar-texto" class="botao-copiar">Copiar texto</button>
+        </div>
+        <textarea id="texto-recuperado" rows="7" readonly placeholder="O texto aparece aqui."></textarea>
+        <p id="resumo-resultado" class="nota"></p>
+      </div>
+    </section>
+
+    <footer class="rodape">
+      <p><strong>Uso educacional.</strong> Este é o RSA "puro", sem padding, e não deve proteger dados reais. Sistemas de verdade usam RSA-OAEP com SHA-256 por meio de bibliotecas criptográficas confiáveis.</p>
+    </footer>
+  </main>
+
+</body>
+</html>
